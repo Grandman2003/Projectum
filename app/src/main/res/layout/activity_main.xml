@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/activity_color"
-    tools:context=".MainActivity">
+    tools:context=".main.MainActivity">
 
     <!--fragment
         android:name="com.example.veryness.main.MainFragment"
@@ -44,6 +44,7 @@
 
     </FrameLayout>
 
+
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="73dp"
@@ -59,13 +60,17 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Объекты" />
+            android:background="#FFEB3B"
+            android:text="Объекты"
+            android:textColor="#FFFFFFFF" />
 
         <Button
             android:id="@+id/addings"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="#8BC34A"
+            android:textColor="#FFFFFFFF"
             android:text="Функции" />
 
         <Button
@@ -73,8 +78,18 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Запись" />
+            android:background="#673AB7"
+            android:text="Запись"
+            android:textColor="#FFFFFFFF" />
     </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/videorecording"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteY="902dp">
+
+    </FrameLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
