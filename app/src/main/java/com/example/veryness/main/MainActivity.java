@@ -1,6 +1,7 @@
 package com.example.veryness.main;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,6 +27,8 @@ import android.os.CountDownTimer;
 import android.os.Environment;
 import android.os.Parcelable;
 import android.os.PersistableBundle;
+import android.os.storage.StorageManager;
+import android.os.storage.StorageVolume;
 import android.provider.Settings;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -45,6 +48,7 @@ import com.example.veryness.workingfragments.RecordingFragment;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -88,6 +92,7 @@ good luck!! */
         button2 = findViewById(R.id.addings);
         button3 = findViewById(R.id.records);
         button1.setOnClickListener(myOnClickListener);
+
 
 
         button2.setOnClickListener(new View.OnClickListener() {
@@ -261,15 +266,15 @@ good luck!! */
         }
     };
 
- /*   @Override
+   @Override
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
             if(savedInstanceState.getParcelableArrayList("actors") != null) {
                 items.addAll(Objects.requireNonNull(savedInstanceState.<Actor>getParcelableArrayList("actors")));
                 Log.v("LOOOK_on item", items.get(0).getName());
                 Log.v("LOOOK_AT_THIS_SIZE_TO_FIND_Inst", String.valueOf(savedInstanceState.<Actor>getParcelableArrayList("actors")));
-                fragment.setItems(items);
-                funfragment.setItems(items);
+                fragment.setItems(clone(items));
+                funfragment.setItems(clone(items));
                 Log.v("CHECKER", String.valueOf(funfragment.getItems().size()));
                 fragment.getMySurfaceView().setAddingFragment(funfragment);
 
@@ -282,6 +287,14 @@ good luck!! */
         }
     }
 
+    private List<Actor> clone(List<Actor> items) {
+       Object[] fg= (Actor[]) items.toArray();
+       ArrayList<Actor> newlist=new ArrayList<>();
+       for(int i=0;i<fg.length;i++){
+
+       }
+       return newlist;
+    }
 
 
     @Override
@@ -289,5 +302,5 @@ good luck!! */
         super.onSaveInstanceState(outState);
         outState.putParcelableArrayList("actors", (ArrayList<? extends Parcelable>) funfragment.getItems());
         outState.putParcelableArrayList("sprites",fragment.getMySurfaceView().getSprite());
-    } */
+    }
 }

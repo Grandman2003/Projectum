@@ -28,6 +28,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Environment;
 import android.os.Handler;
+import android.os.storage.StorageManager;
 import android.provider.Settings;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -66,6 +67,7 @@ import java.util.logging.LogRecord;
 
 import static android.app.Activity.RESULT_OK;
 import static android.os.Environment.DIRECTORY_PICTURES;
+import static androidx.core.content.ContextCompat.getSystemService;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -178,7 +180,9 @@ public class VideoFragment extends Fragment {
                     fragmentofvideo.getMySurfaceView().getThread().setKey(0);
                     List <Bitmap> framers=fragmentofvideo.getMySurfaceView().getThread().getFrames();
                     //File filepath = new File(Environment.getExternalStorageDirectory().toString());
-                    File filepath = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MOVIES).toString());
+
+                    File filepath = new File(Objects.requireNonNull(getActivity()).getExternalMediaDirs()[0].toString());
+                    Log.v("DIRDIR", Objects.requireNonNull(getActivity()).getExternalMediaDirs().toString());
                     Log.v("Bitmap_array", framers.toString());
                     Log.v("EXTERNAL_STORAGE", filepath.getAbsolutePath());
                     File dir = new File(filepath.getAbsolutePath() + "");
@@ -229,7 +233,10 @@ public class VideoFragment extends Fragment {
 
 
                 }
-            }});
+            }
+
+
+        });
         return view;
     }
 
